@@ -64,8 +64,8 @@ DOWNLOAD_DELAY = 3
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    "scrapy_redis.pipelines.RedisPipeline": 500,
     "bookvoed.pipelines.BookvoedPipeline": 300,
+    "scrapy_redis.pipelines.RedisPipeline": 500,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
