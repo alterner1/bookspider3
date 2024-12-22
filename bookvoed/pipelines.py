@@ -12,7 +12,7 @@
 from itemadapter import ItemAdapter
 import os
 import psycopg
-from psycopg import sql
+import time
 
 class BookvoedPipeline:
 
@@ -20,8 +20,6 @@ class BookvoedPipeline:
         self.conn = psycopg.connect(os.getenv('CONNECTION_STRING'))
         ## Create cursor, used to execute commands
         self.cur = self.conn.cursor()
-       
-
         ## Create books table if none exists
         ## The database 'bookspider' must first be created
         ## mysql> CREATE DATABASE bookspider;
