@@ -17,7 +17,8 @@ class Urls2queueSpider(scrapy.Spider):
                 if num > last_page:
                         last_page = num
         
-        redisClient = redis.from_url('redis://:${redis_pass}@${redis_host}:6379')
+        redisClient = redis.from_url('${redis_url}')
+        #('redis://:${redis_pass}@${redis_host}:6379')
         #('redis://127.0.0.1:6379')
 
         #for i in range(last_page):
