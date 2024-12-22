@@ -10,26 +10,23 @@
 # based on this tutorial https://scrapeops.io/python-scrapy-playbook/scrapy-save-data-mysql/
 
 from itemadapter import ItemAdapter
-import mysql.connector
+import os
+import psycopg2
+from psycopg2 import sql
 
 class BookvoedPipeline:
 
     def __init__(self):
-        self.conn = mysql.connector.connect(
-            host = 'localhost',
-            user = 'root',
-            password = '123456',
-            database = 'bookspider'
-        )
-
+        self.conn = psycopg2.connect(os.getenv('CONNECTION_STRING'))
         ## Create cursor, used to execute commands
         self.cur = self.conn.cursor()
+       
 
         ## Create books table if none exists
         ## The database 'bookspider' must first be created
         ## mysql> CREATE DATABASE bookspider;
         self.cur.execute("""
-        CREATE TABLE IF NOT EXISTS books (
+        CREATE TABLE IF NOT EXISTS book_data (
             id int NOT NULL auto_increment, 
             name VARCHAR(255) NOT NULL,
             price DECIMAL(8, 2) NOT NULL,

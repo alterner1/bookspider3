@@ -1,3 +1,4 @@
+import os
 # Scrapy settings for bookvoed project
 #
 # For simplicity, this file contains only settings considered important or
@@ -64,6 +65,7 @@ DOWNLOAD_DELAY = 3
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
     "bookvoed.pipelines.BookvoedPipeline": 300,
+    "scrapy_redis.pipelines.RedisPipeline": 500,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -96,5 +98,4 @@ FEED_EXPORT_ENCODING = "utf-8"
 DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
 SCHEDULER = "scrapy_redis.scheduler.Scheduler"
 SCHEDULER_PERSIST = True
-
-REDIS_URL = "redis://localhost:6379"
+REDIS_URL = os.getenv('redis_url')
