@@ -98,4 +98,5 @@ FEED_EXPORT_ENCODING = "utf-8"
 DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
 SCHEDULER = "scrapy_redis.scheduler.Scheduler"
 SCHEDULER_PERSIST = True
-REDIS_URL = os.getenv('redis_url')
+REDIS_URL = "redis://:${redis_passwd}@${redis_host}:6379"
+#os.getenv('REDIS_URL')
