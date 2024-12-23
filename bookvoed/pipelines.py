@@ -12,12 +12,20 @@
 from itemadapter import ItemAdapter
 import os
 import psycopg2
-import time
+from psycopg2 import sql
+
 
 class BookvoedPipeline:
 
     def __init__(self):
-        self.conn = psycopg2.connect(os.getenv('CONNECTION_STRING'))
+        #self.conn = psycopg2.connect(os.getenv('CONNECTION_STRING'))
+        db_name = os.getenv('db_name')
+        db_user = os.getenv('db_user')
+        db_passwd = os.getenv('db_passwd')
+        db_host = os.getenv('db_host')
+        self.conn = psycopg2.connect(host=db_host, port=6432, database=db_name, user=db_user,password=db_passwd )
+
+
         ## Create cursor, used to execute commands
         self.cur = self.conn.cursor()
         ## Create books table if none exists
