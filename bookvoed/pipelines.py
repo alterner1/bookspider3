@@ -33,11 +33,10 @@ class BookvoedPipeline:
         ## mysql> CREATE DATABASE bookspider;
         self.cur.execute("""
         CREATE TABLE IF NOT EXISTS book_data (
-            id int NOT NULL auto_increment, 
-            name VARCHAR(255) NOT NULL,
-            price DECIMAL(8, 2) NOT NULL,
-            author VARCHAR(255) NOT NULL,
-            PRIMARY KEY (id)
+                id serial PRIMARY KEY,
+                name VARCHAR(255) NOT NULL,
+                author VARCHAR(255),
+                price VARCHAR(255) 
         )
         """)
 
