@@ -11,13 +11,13 @@
 
 from itemadapter import ItemAdapter
 import os
-import psycopg
+import psycopg2
 import time
 
 class BookvoedPipeline:
 
     def __init__(self):
-        self.conn = psycopg.connect(os.getenv('CONNECTION_STRING'))
+        self.conn = psycopg2.connect(os.getenv('CONNECTION_STRING'))
         ## Create cursor, used to execute commands
         self.cur = self.conn.cursor()
         ## Create books table if none exists
